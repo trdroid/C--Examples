@@ -19,22 +19,23 @@ namespace TaskCreationApplication_1
             Task.Factory.StartNew(() => ProcessMessage("Reject Meeting"));
             Task.Factory.StartNew(() => ProcessMessage("Find an empty slot for all members of a team"), TaskCreationOptions.LongRunning);
             Thread.Sleep(TimeSpan.FromSeconds(1));
-
-            Console.ReadKey();
+            Console.ReadKey();         
         }
 
         static void ProcessMessage(string message)
         {
-            Console.WriteLine($"Message {message} is being processing by thread with id {Thread.CurrentThread.ManagedThreadId}\n");
+            Console.WriteLine($"Message '{message}' is being processing by thread with id {Thread.CurrentThread.ManagedThreadId}");
 
             if (Thread.CurrentThread.IsThreadPoolThread)
             {
-                Console.WriteLine($"The thread is from the thread pool");
+                Console.WriteLine($"The thread {Thread.CurrentThread.ManagedThreadId} is from the thread pool");
             }
             else
             {
-                Console.WriteLine($"The thread is NOT from the thread pool");
+                Console.WriteLine($"The thread {Thread.CurrentThread.ManagedThreadId} is NOT from the thread pool");
             }
+
+            Console.WriteLine();
         }
     }
 }
