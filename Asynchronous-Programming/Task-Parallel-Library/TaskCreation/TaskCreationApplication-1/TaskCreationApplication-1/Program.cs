@@ -18,8 +18,8 @@ namespace TaskCreationApplication_1
 
             Task.Factory.StartNew(() => ProcessMessage("Reject Meeting"));
             Task.Factory.StartNew(() => ProcessMessage("Find an empty slot for all members of a team"), TaskCreationOptions.LongRunning);
-            Thread.Sleep(TimeSpan.FromSeconds(1));
-            Console.ReadKey();         
+
+            Thread.Sleep(TimeSpan.FromSeconds(1));            
         }
 
         static void ProcessMessage(string message)
