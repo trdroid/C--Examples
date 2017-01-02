@@ -22,14 +22,18 @@ namespace ParallelTasks_2
                 task.Start();
             }
 
-            while(tasks.Count > 0)
+            Console.WriteLine("Before loop, Task Count:" + tasks.Count);
+
+            while (tasks.Count > 0)
             {
+                Console.WriteLine("In loop, Task Count:" + tasks.Count);
+
                 Task<int> completedTask = Task.WhenAny(tasks).Result;
 
                 Console.WriteLine($"A task has completed with result: {completedTask.Result}" + ", Time Now: {0:MM/dd/yyy HH:mm:ss.fff}", DateTime.Now);
 
                 tasks.Remove(completedTask);
-            }            
+            }
 
             Console.WriteLine("Done");
             Console.ReadKey();
@@ -37,7 +41,7 @@ namespace ParallelTasks_2
 
         static int ProcessMessage(string message, int processingUnits)
         {
-            Console.WriteLine($"Processing the message '{message}' ... It might take a while ...");
+            Console.WriteLine($"Processing the message '{message}' with processing units {processingUnits} ...");
 
             Console.WriteLine($"Message '{message}' is being processing by thread with id {Thread.CurrentThread.ManagedThreadId}");
 
@@ -50,7 +54,7 @@ namespace ParallelTasks_2
                 Console.WriteLine($"The thread {Thread.CurrentThread.ManagedThreadId} is NOT from the thread pool");
             }
 
-            Thread.Sleep(TimeSpan.FromSeconds(2 * processingUnits));
+            Thread.Sleep(TimeSpan.FromSeconds(10 * processingUnits));
 
             return processingUnits;
         }
