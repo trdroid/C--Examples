@@ -8,6 +8,10 @@
 *.user
 *.userosscache
 *.sln.docstates
+<<<<<<< HEAD
+=======
+*.vcxproj.filters
+>>>>>>> f00de7a656d6151a8ac1a259d83815a768114e48
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -42,9 +46,12 @@ TestResult.xml
 [Rr]eleasePS/
 dlldata.c
 
+<<<<<<< HEAD
 # Benchmark Results
 BenchmarkDotNet.Artifacts/
 
+=======
+>>>>>>> f00de7a656d6151a8ac1a259d83815a768114e48
 # .NET Core
 project.lock.json
 project.fragment.lock.json
@@ -169,7 +176,11 @@ PublishScripts/
 !**/packages/build/
 # Uncomment if necessary however generally it will be regenerated when needed
 #!**/packages/repositories.config
+<<<<<<< HEAD
 # NuGet v3's project.json files produces more ignorable files
+=======
+# NuGet v3's project.json files produces more ignoreable files
+>>>>>>> f00de7a656d6151a8ac1a259d83815a768114e48
 *.nuget.props
 *.nuget.targets
 
@@ -186,7 +197,10 @@ AppPackages/
 BundleArtifacts/
 Package.StoreAssociation.xml
 _pkginfo.txt
+<<<<<<< HEAD
 *.appx
+=======
+>>>>>>> f00de7a656d6151a8ac1a259d83815a768114e48
 
 # Visual Studio cache files
 # files ending in .cache can be ignored
@@ -203,6 +217,10 @@ ClientBin/
 *.jfm
 *.pfx
 *.publishsettings
+<<<<<<< HEAD
+=======
+node_modules/
+>>>>>>> f00de7a656d6151a8ac1a259d83815a768114e48
 orleans.codegen.cs
 
 # Since there are multiple workflows, uncomment next line to ignore bower_components
@@ -223,7 +241,10 @@ UpgradeLog*.htm
 # SQL Server files
 *.mdf
 *.ldf
+<<<<<<< HEAD
 *.ndf
+=======
+>>>>>>> f00de7a656d6151a8ac1a259d83815a768114e48
 
 # Business Intelligence projects
 *.rdl.data
@@ -238,10 +259,13 @@ FakesAssemblies/
 
 # Node.js Tools for Visual Studio
 .ntvs_analysis.dat
+<<<<<<< HEAD
 node_modules/
 
 # Typescript v1 declaration files
 typings/
+=======
+>>>>>>> f00de7a656d6151a8ac1a259d83815a768114e48
 
 # Visual Studio 6 build log
 *.plg
@@ -279,6 +303,7 @@ __pycache__/
 *.pyc
 
 # Cake - Uncomment if you are using it
+<<<<<<< HEAD
 # tools/**
 # !tools/packages.config
 
@@ -293,3 +318,6 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+=======
+# tools/
+>>>>>>> f00de7a656d6151a8ac1a259d83815a768114e48
