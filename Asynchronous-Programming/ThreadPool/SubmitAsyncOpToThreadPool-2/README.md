@@ -34,6 +34,6 @@ End of the Main thread 9
 
 ### Explanation
 
-1. Passing the value to the state parameter.
+1. Passing a value to the state parameter.
 2. The state parameter
 
