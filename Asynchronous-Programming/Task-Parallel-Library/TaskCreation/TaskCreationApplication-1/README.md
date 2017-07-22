@@ -16,13 +16,13 @@ namespace TaskCreationApplication_1
     {
         static void Main(string[] args)
         {
-            var task1 = new Task(() => ProcessMessage("Create Meeting"));
-            task1.Start();
+            var task1 = new Task(() => ProcessMessage("Create Meeting"));     <--- 1
+            task1.Start();      <--- 2
 
-            Task.Run(() => ProcessMessage("Accept Meeting"));
+            Task.Run(() => ProcessMessage("Accept Meeting"));   <--- 3
 
-            Task.Factory.StartNew(() => ProcessMessage("Reject Meeting"));
-            Task.Factory.StartNew(() => ProcessMessage("Find an empty slot for all members of a team"), TaskCreationOptions.LongRunning);
+            Task.Factory.StartNew(() => ProcessMessage("Reject Meeting"));  <--- 4
+            Task.Factory.StartNew(() => ProcessMessage("Find an empty slot for all members of a team"), TaskCreationOptions.LongRunning);   <--- 5
             
             Thread.Sleep(TimeSpan.FromSeconds(1));            
         }
@@ -46,6 +46,7 @@ namespace TaskCreationApplication_1
 }
 ```
 
+NOTE: It could be noticed from the output that the task execution order is not defined. 
 
 **Output**
 
