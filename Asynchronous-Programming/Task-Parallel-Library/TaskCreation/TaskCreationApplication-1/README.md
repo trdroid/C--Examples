@@ -55,7 +55,7 @@ namespace System.Threading.Tasks {
         public Task(Action action, CancellationToken cancellationToken);
         public Task(Action action, TaskCreationOptions creationOptions);
         public Task(Action<object> action, object state);
-        public Task(Action action, CancellationToken cancellationToken, TaskCreationOptions creationOptions);
+        public Task(Action action, CancellationToken cancellationToken, TaskCreationOptions creationOptions);   
         public Task(Action<object> action, object state, CancellationToken cancellationToken);
         public Task(Action<object> action, object state, TaskCreationOptions creationOptions);
         public Task(Action<object> action, object state, CancellationToken cancellationToken, TaskCreationOptions creationOptions);
@@ -63,7 +63,7 @@ namespace System.Threading.Tasks {
 
 2. Call the *Start()* method on the task to start executing the task.
 
-3. The *Task.Run()* method 
+3. The *Task.Run(Action action)* method creates a task and starts it immediately. 
 
 ```cs
 namespace System.Threading.Tasks
@@ -81,9 +81,37 @@ namespace System.Threading.Tasks
         public static Task<TResult> Run<TResult>(Func<TResult> function, CancellationToken cancellationToken);
         public static Task<TResult> Run<TResult>(Func<Task<TResult>> function, CancellationToken cancellationToken);
 
-    }
-}
 ```
+
+4. The *Task.StartNew(Action action)* method creates a task and starts it immediately. The *Task.Run(Action action)* method calls this method internally. 
+
+```cs
+namespace System.Threading.Tasks
+{
+    public class Task : IThreadPoolWorkItem, IAsyncResult, IDisposable 
+    {
+        //...
+        
+        public Task StartNew(Action action);     <---
+        public Task StartNew(Action<object> action, object state);
+        public Task StartNew(Action action, CancellationToken cancellationToken);
+        public Task StartNew(Action action, TaskCreationOptions creationOptions);   <---
+        public Task StartNew(Action<object> action, object state, TaskCreationOptions creationOptions);   
+        public Task StartNew(Action<object> action, object state, CancellationToken cancellationToken);
+        public Task StartNew(Action action, CancellationToken cancellationToken, TaskCreationOptions creationOptions, TaskScheduler scheduler);
+        public Task StartNew(Action<object> action, object state, CancellationToken cancellationToken, TaskCreationOptions creationOptions, TaskScheduler scheduler);
+        public Task<TResult> StartNew<TResult>(Func<TResult> function);
+        public Task<TResult> StartNew<TResult>(Func<object, TResult> function, object state);
+        public Task<TResult> StartNew<TResult>(Func<TResult> function, TaskCreationOptions creationOptions);
+        public Task<TResult> StartNew<TResult>(Func<TResult> function, CancellationToken cancellationToken);
+        public Task<TResult> StartNew<TResult>(Func<object, TResult> function, object state, TaskCreationOptions creationOptions);
+        public Task<TResult> StartNew<TResult>(Func<object, TResult> function, object state, CancellationToken cancellationToken);
+        public Task<TResult> StartNew<TResult>(Func<TResult> function, CancellationToken cancellationToken, TaskCreationOptions creationOptions, TaskScheduler scheduler);
+        public Task<TResult> StartNew<TResult>(Func<object, TResult> function, object state, CancellationToken cancellationToken, TaskCreationOptions creationOptions, TaskScheduler scheduler);
+
+```
+
+5. 
 
 NOTE: It could be noticed from the output that the task execution order is not defined. 
 
