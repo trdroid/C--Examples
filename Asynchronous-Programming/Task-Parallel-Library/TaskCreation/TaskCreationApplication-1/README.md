@@ -46,6 +46,45 @@ namespace TaskCreationApplication_1
 }
 ```
 
+1. Create a task and pass in a lambda expression to an *Action* delegate.
+
+```cs
+namespace System.Threading.Tasks {
+    public class Task : IThreadPoolWorkItem, IAsyncResult, IDisposable {
+        public Task(Action action);       <---- 
+        public Task(Action action, CancellationToken cancellationToken);
+        public Task(Action action, TaskCreationOptions creationOptions);
+        public Task(Action<object> action, object state);
+        public Task(Action action, CancellationToken cancellationToken, TaskCreationOptions creationOptions);
+        public Task(Action<object> action, object state, CancellationToken cancellationToken);
+        public Task(Action<object> action, object state, TaskCreationOptions creationOptions);
+        public Task(Action<object> action, object state, CancellationToken cancellationToken, TaskCreationOptions creationOptions);
+```
+
+2. Call the *Start()* method on the task to start executing the task.
+
+3. The *Task.Run()* method 
+
+```cs
+namespace System.Threading.Tasks
+{
+    public class Task : IThreadPoolWorkItem, IAsyncResult, IDisposable 
+    {
+        //...
+        
+        public static Task Run(Func<Task> function);
+        public static Task Run(Action action);      <---
+        public static Task Run(Func<Task> function, CancellationToken cancellationToken);
+        public static Task Run(Action action, CancellationToken cancellationToken);
+        public static Task<TResult> Run<TResult>(Func<Task<TResult>> function);
+        public static Task<TResult> Run<TResult>(Func<TResult> function);
+        public static Task<TResult> Run<TResult>(Func<TResult> function, CancellationToken cancellationToken);
+        public static Task<TResult> Run<TResult>(Func<Task<TResult>> function, CancellationToken cancellationToken);
+
+    }
+}
+```
+
 NOTE: It could be noticed from the output that the task execution order is not defined. 
 
 **Output**
